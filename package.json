@@ -1,0 +1,10 @@
+{
+    "name": "com.kimiguna.pixel-perfect-camera-adjustment",
+    "displayName": "Pixel Perfect Camera Adjustment",
+    "version": "1.0.0",
+    "unity": "2019.4",
+    "description": "Allows free resolution scaling on Pixel Perfect Camera.",
+    "dependencies": {
+        "com.unity.render-pipelines.universal": "7.3.1"
+    }
+}
