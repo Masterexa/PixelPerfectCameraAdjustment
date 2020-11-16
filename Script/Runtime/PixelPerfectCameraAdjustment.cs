@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering;
+using UnityEngine.Serialization;
 
 namespace Kimiguna.Graphics2D{
     [RequireComponent(typeof(UnityEngine.Experimental.Rendering.Universal.PixelPerfectCamera))]
@@ -16,12 +17,21 @@ namespace Kimiguna.Graphics2D{
         }
 
         #region Fields
-            [SerializeField]Vector2Int m_referenceResolution = new Vector2Int(400,300);
+            [FormerlySerializedAs("m_referenceResolution")]
+            [SerializeField]Vector2Int m_baseResolution = new Vector2Int(400,300);
+            public Vector2Int baseResolution
+            {
+                get => m_baseResolution;
+                set => m_baseResolution = value;
+            }
+
+            [System.Obsolete]
             public Vector2Int referenceResolution
             {
-                get => m_referenceResolution;
-                set => m_referenceResolution = value;
+                get => m_baseResolution;
+                set => m_baseResolution = value;
             }
+
 
             [Space]
             [SerializeField]MatchMode m_matchMode = MatchMode.Extend;
@@ -54,7 +64,7 @@ namespace Kimiguna.Graphics2D{
 
             void LateUpdate()
             {
-                var res = m_referenceResolution;
+                var res = m_baseResolution;
                 var refAspect = (float)res.x/(float)res.y;
                 var camAspect = m_camera.aspect;
                 var reciprocalAspect = 1f/camAspect;
