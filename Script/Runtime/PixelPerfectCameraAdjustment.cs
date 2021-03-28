@@ -80,8 +80,9 @@ namespace Kimiguna.Graphics2D{
                 m_pixelPerfectCamera.refResolutionY = (int)Mathf.Lerp((float)res.x*reciprocalAspect, res.y, computedMatchRatio);
 
                 // Crop to less than half the resolution of the camera
-                m_pixelPerfectCamera.refResolutionX = Mathf.Min(m_pixelPerfectCamera.refResolutionX, m_camera.pixelWidth/2);
-                m_pixelPerfectCamera.refResolutionY = Mathf.Min(m_pixelPerfectCamera.refResolutionY, m_camera.pixelHeight/2);
+                
+                m_pixelPerfectCamera.refResolutionX = Mathf.Min(m_pixelPerfectCamera.refResolutionX, m_camera.pixelWidth)/2*2;
+                m_pixelPerfectCamera.refResolutionY = Mathf.Min(m_pixelPerfectCamera.refResolutionY, m_camera.pixelHeight)/2*2;
             }
         #endregion
     }
